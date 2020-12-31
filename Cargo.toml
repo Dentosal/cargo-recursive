@@ -1,0 +1,17 @@
+[package]
+name = "cargo-recursive"
+version = "0.1.0"
+authors = ["Hannes Karppila <hannes.karppila@gmail.com>"]
+edition = "2018"
+description = "Cargo subcommand for running a (cargo) command in all cargo projects under a specified directory"
+repository = "https://github.com/Dentosal/cargo-recursive"
+readme = "README.md"
+license = "CC0-1.0"
+categories = ["development-tools::cargo-plugins"]
+keywords = ["cargo", "cargo-subcommand"]
+
+
+[dependencies]
+anyhow = "1.0"
+clap = "2.33"
+
