@@ -1,3 +1,5 @@
+[![Crates.io](https://img.shields.io/crates/v/cargo-recursive.svg)](https://crates.io/crates/cargo-recursive)
+
 # cargo-recursive
 
 A cargo subcommand for running a command in all subdirectories recursively.
