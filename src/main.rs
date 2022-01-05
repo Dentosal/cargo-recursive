@@ -107,7 +107,13 @@ fn actual_main() -> Result<()> {
     Ok(())
 }
 
-fn process_dir(path: &Path, depth: usize, verbose: bool, dry_run: bool, cmd: &CommandInfo) -> Result<()> {
+fn process_dir(
+    path: &Path,
+    depth: usize,
+    verbose: bool,
+    dry_run: bool,
+    cmd: &CommandInfo,
+) -> Result<()> {
     if depth == 0 {
         return Ok(());
     }
@@ -130,6 +136,9 @@ fn process_dir(path: &Path, depth: usize, verbose: bool, dry_run: bool, cmd: &Co
         let e = e?;
         if e.file_type()?.is_dir() {
             if let Err(e) = process_dir(&e.path(), depth - 1, verbose, dry_run, cmd) {
+                if cmd.exit_on_error {
+                    return Err(e);
+                }
                 eprintln!("Warn: {}", e);
                 for c in e.chain().skip(1) {
                     eprintln!("    {}", c);
